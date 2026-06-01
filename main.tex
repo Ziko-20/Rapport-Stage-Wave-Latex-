@@ -1,0 +1,537 @@
+% ============================================================
+%  RAPPORT DE STAGE — ZAKARIA LEMCHAOURI
+%  OFPPT CMC Rabat — Wave Inc., Témara
+%  Application : WAVE — Gestion Clients & Licences
+% ============================================================
+
+\documentclass[12pt, a4paper]{report}
+
+% ---- Encodage & langue ----
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french, provide=*]{babel}
+\usepackage{charter}
+
+% ---- Mise en page ----
+\usepackage[
+  top=3cm, bottom=2.5cm,
+  left=3cm,  right=2.5cm
+]{geometry}
+\usepackage{setspace}
+\onehalfspacing
+
+% ---- Couleurs & graphiques ----
+\usepackage[dvipsnames, table]{xcolor}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{positioning, shapes.geometric, arrows.meta}
+
+% Palette Wave
+\definecolor{WaveBlue}{HTML}{1A73E8}
+\definecolor{WaveDark}{HTML}{0D1B2A}
+\definecolor{WaveAccent}{HTML}{00BFA5}
+\definecolor{WaveGray}{HTML}{F5F7FA}
+\definecolor{WaveBorder}{HTML}{E0E6ED}
+\definecolor{HeaderBg}{HTML}{0D1B2A}
+
+% ---- Typographie ----
+\usepackage{microtype}
+
+% ---- En-têtes & pieds de page avec logos ----
+\usepackage{fancyhdr}
+\usepackage{calc}
+\pagestyle{fancy}
+\fancyhf{}
+
+% Header : logo OFPPT à gauche, logo CMC à droite
+\fancyhead[L]{%
+  \raisebox{-0.3\height}{\includegraphics[height=1.4cm]{logos/ofppt.png}}%
+}
+\fancyhead[C]{\small\color{WaveBlue}\textit{Rapport de Stage \textbullet{} Zakaria Lemchaouri}}
+\fancyhead[R]{%
+  \raisebox{-0.3\height}{\includegraphics[height=1.4cm]{logos/cmc.png}}%
+}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\setlength{\headheight}{1.4cm}
+
+% ---- Titres de chapitres en NOIR ----
+\usepackage{titlesec}
+\titleformat{\chapter}[hang]
+  {\normalfont\huge\bfseries\color{black}}
+  {\colorbox{HeaderBg}{\color{white}\large\bfseries\,CHAPITRE \thechapter\,}}
+  {12pt}
+  {\color{black}}[\vspace{2pt}\color{WaveBorder}\titlerule]
+\titlespacing*{\chapter}{0pt}{10pt}{28pt}
+
+\titleformat{\section}
+  {\normalfont\Large\bfseries\color{black}}
+  {\thesection}{1em}{}[\color{WaveBlue}\titlerule]
+\titlespacing{\section}{0pt}{18pt}{8pt}
+
+\titleformat{\subsection}
+  {\normalfont\large\bfseries\color{black}}
+  {\thesubsection}{1em}{}
+\titlespacing{\subsection}{0pt}{14pt}{6pt}
+
+% ---- Tableaux ----
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{longtable}
+
+% ---- Listes ----
+\usepackage{enumitem}
+\setlist[itemize]{noitemsep, topsep=4pt, leftmargin=1.5em}
+
+% ---- Code source ----
+\usepackage{listings}
+\lstset{
+  basicstyle=\small\ttfamily,
+  backgroundcolor=\color{WaveGray},
+  frame=single,
+  rulecolor=\color{WaveBorder},
+  breaklines=true,
+  captionpos=b,
+  showstringspaces=false,
+  keywordstyle=\color{WaveBlue}\bfseries,
+  commentstyle=\color{gray}\itshape,
+  stringstyle=\color{WaveAccent},
+}
+
+% ---- Liens hypertexte ----
+\usepackage[
+  colorlinks=true,
+  linkcolor=WaveBlue,
+  urlcolor=WaveAccent,
+  citecolor=WaveDark,
+  pdftitle={Rapport de Stage - Zakaria Lemchaouri},
+  pdfauthor={Zakaria Lemchaouri},
+]{hyperref}
+
+% ---- Table des matières ----
+\usepackage{tocloft}
+\renewcommand{\cfttoctitlefont}{\Huge\bfseries\color{black}}
+\renewcommand{\cftloftitlefont}{\Huge\bfseries\color{black}}
+\renewcommand{\cftlottitlefont}{\Huge\bfseries\color{black}}
+\renewcommand{\cftchapfont}{\bfseries\color{WaveDark}}
+\renewcommand{\cftsecfont}{\color{WaveDark}}
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+
+% ---- Divers ----
+\usepackage{caption}
+\captionsetup{font=small, labelfont={bf,color=WaveBlue}}
+\usepackage{float}
+\usepackage{emptypage}
+
+% ============================================================
+%  MACROS
+% ============================================================
+\newcommand{\wave}{\textbf{\color{WaveBlue}WAVE}}
+\newcommand{\ofppt}{\textsc{OFPPT}}
+\newcommand{\HRule}{\rule{\linewidth}{0.5pt}}
+
+% ============================================================
+%  DOCUMENT
+% ============================================================
+\begin{document}
+
+\pagenumbering{gobble}
+
+% ============================================================
+%  PAGE DE GARDE
+% ============================================================
+\begin{titlepage}
+\centering
+
+\begin{tikzpicture}[remember picture, overlay]
+  \fill[WaveDark] (current page.north west)
+    rectangle ([yshift=-3.2cm]current page.north east);
+  \fill[WaveBlue] ([yshift=-3.2cm]current page.north west)
+    rectangle ([yshift=-3.5cm]current page.north east);
+\end{tikzpicture}
+
+\vspace*{1.8cm}
+
+\begin{minipage}{0.45\textwidth}
+  \centering
+  {\large\bfseries\color{WaveDark}OFPPT \textbullet{} CMC Rabat}
+\end{minipage}
+\hfill
+\begin{minipage}{0.45\textwidth}
+  \centering
+  {\large\bfseries\color{WaveBlue}Wave Inc. \textbullet{} Témara}
+\end{minipage}
+
+\vspace{1.2cm}
+\HRule\\[0.4cm]
+
+{\huge\bfseries\color{WaveDark}Rapport de stage de fin de formation}\\[0.3cm]
+{\large Présenté en vue de l'obtention du diplôme de}\\[0.5cm]
+{\LARGE\bfseries\color{WaveBlue}TECHNICIEN SPÉCIALISÉ}\\[0.15cm]
+{\LARGE\bfseries\color{WaveBlue}EN DÉVELOPPEMENT DIGITAL}\\[0.4cm]
+\HRule
+
+\vspace{0.8cm}
+
+\fcolorbox{WaveBlue}{WaveGray}{%
+\begin{minipage}{0.82\textwidth}
+  \centering\vspace{0.5cm}
+  {\LARGE\bfseries\color{WaveBlue}WAVE}\\[0.2cm]
+  {\large\bfseries\color{WaveDark}Plateforme de Gestion Clients et Licences}\\[0.2cm]
+  {\normalsize Développement d'une application web full-stack\\
+  pour la gestion commerciale et la gestion des licences logicielles}
+  \vspace{0.5cm}
+\end{minipage}%
+}
+
+\vspace{0.8cm}
+
+{\large\itshape Réalisé par}\\[0.3cm]
+{\LARGE\bfseries\color{WaveDark}M.\ LEMCHAOURI Zakaria}
+
+\vspace{0.8cm}
+
+\begin{tabular}{@{}ll@{}}
+  \textbf{Organisme :}                 & Wave Inc., Témara, Maroc \\[4pt]
+  \textbf{Encadrant professionnel :}   & M. Mohamed Aherdane \\[4pt]
+  \textbf{Encadrante pédagogique :}    & Mme. Ourrahte Malak \\
+\end{tabular}
+
+\vfill
+
+{\normalsize Soutenu le \underline{\hspace{2cm}} /\underline{\hspace{2cm}} / 2026 \quad Devant le jury :}\\[0.5cm]
+\begin{tabular}{@{}lll@{}}
+  M./Mme.\ \underline{\hspace{3.8cm}} & Formateur Développement Digital & \textbf{Président du jury}\\[4pt]
+  M./Mme.\ \underline{\hspace{3.8cm}} & Formateur Développement Digital & \textbf{Examinateur}\\
+\end{tabular}
+
+\begin{tikzpicture}[remember picture, overlay]
+  \fill[WaveBlue] ([yshift=1.2cm]current page.south west)
+    rectangle ([yshift=1.5cm]current page.south east);
+  \fill[WaveDark] (current page.south west)
+    rectangle ([yshift=1.2cm]current page.south east);
+\end{tikzpicture}
+
+\end{titlepage}
+
+\cleardoublepage
+
+% ============================================================
+%  DÉDICACES
+% ============================================================
+\chapter*{Dédicaces}
+\addcontentsline{toc}{chapter}{Dédicaces}
+
+\vspace*{1cm}
+
+\begin{flushright}
+{\Large\itshape À ceux qui ont toujours cru en moi\ldots}
+\end{flushright}
+
+\vspace{1.5cm}
+
+\begin{center}
+\itshape
+
+\textbf{À mes parents,}
+
+\vspace{0.5cm}
+
+Il y a des soutiens qu'on ne mesure qu'avec le recul. Chaque sacrifice
+que vous avez consenti, chaque mot d'encouragement glissé au bon moment,
+chaque regard plein de confiance ont été le carburant silencieux de ce
+parcours. Ce diplôme porte votre nom autant que le mien, et je vous en
+suis infiniment reconnaissant.
+
+\vspace{1.2cm}
+
+\textbf{À ma famille,}
+
+\vspace{0.5cm}
+
+Votre présence chaleureuse et votre soutien constant ont été un ancrage
+précieux, aussi bien dans les moments de doute que dans ceux de fierté.
+Merci d'avoir toujours été là.
+
+\vspace{1.2cm}
+
+\textbf{À mes amis et camarades de promotion,}
+
+\vspace{0.5cm}
+
+Ces deux années n'auraient pas eu la même saveur sans vous. Les sessions
+de travail tardives, les débats techniques qui s'enflammaient pour
+un rien, les fous rires qui décompressaient les journées intenses :
+tout cela a fait partie de la formation, au même titre que les cours.
+Merci pour tout.
+
+\vspace{1.2cm}
+
+\textbf{À toutes les personnes qui croient que l'effort finit toujours par payer.}
+
+\vspace{2cm}
+
+\normalsize\textit{Avec toute ma gratitude et mon respect.}
+
+\end{center}
+
+\cleardoublepage
+
+% ============================================================
+%  REMERCIEMENTS
+% ============================================================
+\chapter*{Remerciements}
+\addcontentsline{toc}{chapter}{Remerciements}
+
+\vspace*{0.5cm}
+
+Ce rapport marque la fin d'une période de formation dense et
+particulièrement enrichissante. Avant d'en présenter le contenu, je
+tiens à exprimer ma reconnaissance envers toutes les personnes qui ont
+contribué, de près ou de loin, à sa réalisation.
+
+\vspace{0.6cm}
+
+Mes premiers remerciements vont naturellement à \textbf{Wave Inc.} pour
+m'avoir accueilli au sein de son équipe dans les meilleures conditions.
+Travailler au sein d'une agence digitale active sur des projets réels
+m'a permis de confronter rapidement mes acquis théoriques à des
+problématiques concrètes, et d'apprendre bien plus vite qu'aucun cours
+n'aurait pu me l'offrir seul.
+
+\vspace{0.6cm}
+
+Je remercie tout particulièrement \textbf{M.~Mohamed Aherdane},
+mon encadrant professionnel, pour sa disponibilité, la clarté de ses
+conseils et la confiance qu'il m'a accordée dans mes choix techniques.
+Ses retours m'ont systématiquement poussé à remettre en question mes
+solutions et à produire un travail plus rigoureux. J'ai beaucoup appris
+à son contact.
+
+\vspace{0.6cm}
+
+J'adresse également ma gratitude à \textbf{Mme.~Ourrahte Malak},
+encadrante pédagogique à l'\ofppt{} CMC Rabat, pour son suivi attentif
+tout au long de la formation et pour les repères méthodologiques qu'elle
+a su transmettre avec bienveillance. Sa disponibilité a été un vrai
+appui dans les moments de flottement.
+
+\vspace{0.6cm}
+
+Je remercie l'ensemble du corps formateur de l'\ofppt{} CMC Rabat pour
+la qualité de l'enseignement dispensé et pour avoir su nous transmettre,
+au-delà des compétences techniques, une vraie façon de penser le
+développement logiciel de manière professionnelle.
+
+\vspace{0.6cm}
+
+Enfin, je remercie les membres du jury pour le temps qu'ils consacreront
+à l'évaluation de ce travail.
+
+\vspace{1.5cm}
+
+\begin{flushright}
+\itshape Zakaria Lemchaouri\\
+%Rabat, juin 2026
+\end{flushright}
+
+\cleardoublepage
+
+% ============================================================
+%  TABLE DES MATIÈRES
+% ============================================================
+\pagenumbering{roman}
+\setcounter{page}{1}
+\tableofcontents
+\cleardoublepage
+
+% ============================================================
+%  TABLE DES FIGURES
+% ============================================================
+\listoffigures
+\addcontentsline{toc}{chapter}{Table des figures}
+\cleardoublepage
+
+% ============================================================
+%  LISTE DES TABLEAUX
+% ============================================================
+\listoftables
+\addcontentsline{toc}{chapter}{Liste des tableaux}
+\cleardoublepage
+
+% ============================================================
+%  ACRONYMES
+% ============================================================
+\chapter*{Acronymes}
+\addcontentsline{toc}{chapter}{Acronymes}
+
+\vspace{0.5cm}
+
+\begin{longtable}{@{}p{3cm}p{11.5cm}@{}}
+\toprule
+\textbf{Sigle} & \textbf{Signification} \\
+\midrule
+\endhead
+\textbf{API}   & Application Programming Interface \\[3pt]
+\textbf{REST}  & Representational State Transfer \\[3pt]
+\textbf{RBAC}  & Role-Based Access Control \\[3pt]
+\textbf{HTTP}  & HyperText Transfer Protocol \\[3pt]
+\textbf{HTTPS} & HyperText Transfer Protocol Secure \\[3pt]
+\textbf{HTML}  & HyperText Markup Language \\[3pt]
+\textbf{CSS}   & Cascading Style Sheets \\[3pt]
+\textbf{JS}    & JavaScript \\[3pt]
+\textbf{JSX}   & JavaScript XML \\[3pt]
+\textbf{PHP}   & Hypertext Preprocessor \\[3pt]
+\textbf{SQL}   & Structured Query Language \\[3pt]
+\textbf{CRUD}  & Create, Read, Update, Delete \\[3pt]
+\textbf{JSON}  & JavaScript Object Notation \\[3pt]
+\textbf{URL}   & Uniform Resource Locator \\[3pt]
+\textbf{UI}    & User Interface \\[3pt]
+\textbf{UX}    & User Experience \\[3pt]
+\textbf{BD}    & Base de Données \\[3pt]
+\textbf{SPA}   & Single Page Application \\[3pt]
+\textbf{SMTP}  & Simple Mail Transfer Protocol \\[3pt]
+\textbf{MVC}   & Modèle, Vue, Contrôleur \\[3pt]
+\textbf{UML}   & Unified Modeling Language \\[3pt]
+\textbf{CORS}  & Cross-Origin Resource Sharing \\[3pt]
+\textbf{MVP}   & Minimum Viable Product \\[3pt]
+\textbf{ORM}   & Object-Relational Mapping \\[3pt]
+\textbf{MAD}   & Dirham Marocain \\[3pt]
+\textbf{CRM}   & Customer Relationship Management \\[3pt]
+\textbf{PDF}   & Portable Document Format \\[3pt]
+\textbf{CSV}   & Comma-Separated Values \\[3pt]
+\textbf{KPI}   & Key Performance Indicator \\[3pt]
+\textbf{JWT}   & JSON Web Token \\[3pt]
+\textbf{SDK}   & Software Development Kit \\[3pt]
+\textbf{CI/CD} & Continuous Integration et Continuous Deployment \\[3pt]
+\textbf{FK}    & Foreign Key (Clé étrangère) \\[3pt]
+\textbf{PK}    & Primary Key (Clé primaire) \\[3pt]
+\textbf{MRR}   & Monthly Recurring Revenue (Revenu mensuel récurrent) \\[3pt]
+\textbf{OFPPT} & Office de la Formation Professionnelle et de la Promotion du Travail \\[3pt]
+\textbf{CMC}   & Cité des Métiers et des Compétences \\[3pt]
+\bottomrule
+\end{longtable}
+
+\cleardoublepage
+
+% ============================================================
+%  INTRODUCTION GÉNÉRALE
+% ============================================================
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+\chapter*{Introduction Générale}
+\addcontentsline{toc}{chapter}{Introduction Générale}
+\markboth{Introduction Générale}{Introduction Générale}
+
+\vspace{0.5cm}
+
+La transformation numérique occupe aujourd'hui une place centrale dans la
+stratégie des entreprises marocaines, tous secteurs confondus. Face à une
+concurrence de plus en plus vive et à des clients dont les attentes ne
+cessent de croître, les agences digitales et les éditeurs de logiciels
+ont besoin d'outils internes solides pour piloter leur activité, gérer
+leurs portefeuilles clients et assurer un suivi fiable de leurs licences
+logicielles. Dans la réalité, beaucoup de structures de taille
+intermédiaire s'appuient encore sur des solutions fragmentées :
+tableurs, échanges par email, fichiers partagés en vrac. Le résultat,
+c'est des pertes d'information régulières, des doublons qui s'accumulent
+et une visibilité insuffisante sur la santé réelle de l'activité.
+
+\vspace{0.6cm}
+
+C'est précisément ce constat qui est à l'origine de ce stage, réalisé au
+sein de \textbf{Wave Inc.}, une agence digitale établie à Témara. L'entreprise
+accompagne des clients marocains dans leur transition numérique en leur
+proposant des solutions web sur mesure ainsi que des produits SaaS. Avant
+le lancement de ce projet, la gestion des clients, des paiements, des
+licences et des contrats reposait en grande partie sur des processus
+manuels peu coordonnés, ce qui rendait le suivi quotidien laborieux et
+compliquait toute lecture globale de la performance commerciale.
+
+\vspace{0.6cm}
+
+La mission confiée consistait donc à concevoir et développer \wave{}, une
+application web full-stack dédiée à la gestion commerciale et à la gestion
+de licences. L'idée centrale était simple : regrouper dans une seule
+plateforme cohérente l'ensemble des opérations du back-office, à savoir
+la gestion des clients, des paiements, des contrats, des factures et du
+pipeline commercial. En parallèle, les clients devaient disposer d'un
+espace personnel pour consulter leurs licences actives, leurs factures,
+leurs contrats, et passer des commandes directement en ligne via une
+intégration \textbf{PayPal}.
+
+\vspace{0.6cm}
+
+L'application a été conçue selon une architecture \textbf{API-first},
+avec un backend en \textbf{Laravel~13} exposant une API REST sécurisée
+grâce à \textbf{Laravel Sanctum}, et un frontend en \textbf{React~19}
+construit avec \textbf{Vite}. Cette séparation claire entre les deux
+couches facilite la maintenance du code, améliore la scalabilité et
+offre une expérience utilisateur fluide sous forme de Single Page
+Application. Le système gère trois profils distincts : \textbf{admin},
+\textbf{manager} et \textbf{client}, dont les droits d'accès sont
+contrôlés de façon granulaire via un middleware de rôle côté serveur
+et un système de routes protégées côté client.
+
+\vspace{0.6cm}
+
+Parmi les fonctionnalités les plus notables, on peut citer la génération
+automatique de factures numérotées au format \texttt{FAC-YYYY-NNNN},
+l'export de documents en PDF via \textbf{Laravel DomPDF}, un système
+de relances et d'alertes pour les contrats arrivant à expiration, un
+journal d'audit basé sur \textbf{Spatie ActivityLog}, et un tableau
+de bord analytique avec visualisation des revenus mensuels grâce à
+\textbf{Chart.js}. Des tâches planifiées envoient par ailleurs des
+emails automatiques aux clients dont les licences approchent de leur
+terme ou qui accusent un retard de paiement.
+
+\vspace{0.6cm}
+
+Ce rapport retrace l'ensemble de la démarche suivie pour mener ce projet
+à bien, en trois chapitres~:
+
+\vspace{0.4cm}
+
+\begin{itemize}
+  \item \textbf{Chapitre 1 (Contexte Général du Projet) :} présentation
+  de l'organisme d'accueil Wave Inc., analyse de la situation existante,
+  identification des problèmes rencontrés et spécification des besoins
+  fonctionnels et non fonctionnels de la solution.
+
+  \item \textbf{Chapitre 2 (Analyse et Conception) :} modélisation du
+  système à l'aide des outils UML (diagrammes de cas d'utilisation, de
+  séquence et de classes), conception du schéma de base de données et
+  définition de l'architecture technique retenue.
+
+  \item \textbf{Chapitre 3 (Réalisation) :} présentation des choix
+  technologiques justifiés, description des modules développés, aperçu
+  des interfaces réalisées et bilan des fonctionnalités livrées.
+\end{itemize}
+
+\vspace{0.6cm}
+
+À titre personnel, ce stage a représenté une expérience particulièrement
+marquante. Au-delà des compétences techniques approfondies, que ce soit
+en développement backend Laravel, en conception d'API REST, en intégration
+de paiement en ligne, en automatisation par tâches planifiées ou en gestion
+des permissions par rôle, c'est surtout la confrontation à un projet réel
+mené de bout en bout qui aura été la vraie valeur ajoutée. Ce rapport
+conclut deux années de formation en Développement Digital à l'\ofppt{}
+CMC Rabat et constitue une première immersion concrète dans les exigences
+du terrain.
+
+% ============================================================
+%  Les chapitres seront ajoutés ici :
+%  \input{chapitre1}
+%  \input{chapitre2}
+%  \input{chapitre3}
+% ============================================================
+
+
+
+
+
+\end{document}
