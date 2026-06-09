@@ -59,10 +59,10 @@
 \usepackage{titlesec}
 \titleformat{\chapter}[hang]
   {\normalfont\huge\bfseries\color{black}}
-  {\colorbox{HeaderBg}{\color{white}\large\bfseries\,CHAPITRE \thechapter\,}}
+  {CHAPITRE \thechapter.}
   {12pt}
-  {\color{black}}[\vspace{2pt}\color{WaveBorder}\titlerule]
-\titlespacing*{\chapter}{0pt}{10pt}{28pt}
+  {\huge\bfseries\color{black}}[\vspace{4pt}\color{WaveBlue}\titlerule]
+\titlespacing*{\chapter}{0pt}{10pt}{30pt}
 
 \titleformat{\section}
   {\normalfont\Large\bfseries\color{black}}
@@ -526,12 +526,596 @@ du terrain.
 % ============================================================
 %  Les chapitres seront ajoutés ici :
 %  \input{chapitre1}
-%  \input{chapitre2}
-%  \input{chapitre3}
+ 
+ 
 % ============================================================
 
+% ============================================================
+%  CHAPITRE 1 : CONTEXTE GENERAL DU PROJET
+% ============================================================
+%\chapter{Contexte General du Projet}
+\clearpage
+\thispagestyle{empty} % Supprime le numéro et l'en-tête sur cette page
+
+% Modification temporaire du style : ajoute un \clearpage APRÈS le titre
+\titleformat{\chapter}[display]
+  {\normalfont\bfseries\color{black}\centering}
+  {\Large CHAPITRE \thechapter}
+  {20pt}
+  {\Huge}[\clearpage]
+
+\titlespacing*{\chapter}{0pt}{150pt}{0pt} % Ajuste la hauteur pour le centrage vertical
+
+\chapter{Contexte General du Projet}
+\label{ch:contexte_general}
+
+% Restauration du style d'origine pour que les chapitres suivants fonctionnent normalement
+\titleformat{\chapter}[display]
+  {\normalfont\bfseries\color{black}\centering}
+  {\Large CHAPITRE \thechapter}
+  {20pt}
+  {\Huge}
+\titlespacing*{\chapter}{0pt}{80pt}{40pt}
+
+% ============================================================
+\section{Introduction}
+% ============================================================
+
+Ce premier chapitre pose les bases du projet en presentant l'environnement
+dans lequel il s'inscrit. On y trouve la description de l'organisme d'accueil,
+l'analyse de la situation avant le projet, les problemes concrets qui ont motive
+le developpement de \wave{}, ainsi que la specification detaillee des besoins
+fonctionnels et non fonctionnels de la solution. L'objectif est de donner au
+lecteur une vision claire du "pourquoi" avant d'aborder le "comment" dans les
+chapitres suivants.
+
+% ============================================================
+\section{Presentation de l'organisme d'accueil}
+% ============================================================
+
+\subsection{Identite et historique}
+
+Wave Inc. est une agence digitale a service complet, fondee le 26 mai 2015 au
+Maroc. L'entreprise est enregistree sous forme juridique de Societe a
+Responsabilite Limitee (SARL) avec un capital social de 500 000 DHS. Sa
+gouvernance repose sur un dirigeant principal associe a trois co-associes.
+
+Depuis sa creation, l'agence a connu plusieurs etapes de restructuration pour
+accompagner sa croissance. Un premier transfert de siege social accompagne d'une
+cession de parts sociales a eu lieu en novembre 2016, suivi d'une augmentation
+de capital en mars 2021 et d'un second transfert de siege en juillet 2022, ce
+qui temoigne d'une trajectoire de developpement continue depuis dix ans.
+
+\subsection{Implantation geographique}
+
+Bien que la communication institutionnelle de l'agence mette en avant un ancrage
+strategique au coeur de Rabat, son etablissement principal est situe sur
+l'Avenue Mohammed V a Temara, a une quinzaine de minutes de la capitale. Cette
+localisation offre un double avantage : des couts d'exploitation immobiliere
+mieux maitrises, tout en maintenant une proximite directe avec les grands
+donneurs d'ordres institutionnels et les ministeres bases a Rabat.
+
+Pour renforcer son positionnement a l'international et capter des contrats de
+sous-traitance sur le marche europeen, Wave Inc. dispose egalement d'un bureau
+de liaison commerciale en France, situe au Blanc Mesnil en region parisienne.
+
+Le tableau \ref{tab:identite_wave} recapitule les principales donnees
+administratives et de contact de l'agence.
+
+\vspace{0.4cm}
+\begin{table}[H]
+\centering
+\caption{Donnees d'identification de Wave Inc.}
+\label{tab:identite_wave}
+\begin{tabularx}{\textwidth}{@{}lX@{}}
+\toprule
+\textbf{Parametre} & \textbf{Donnee} \\
+\midrule
+Denomination sociale     & WAVE INC. SARL \\
+Date de creation         & 26 mai 2015 \\
+Forme juridique          & SARL -- Capital social : 500 000 DHS \\
+Siege social             & 5, Lot Mohamed Et Jamila, 1er Etage, Temara \\
+Etablissement principal  & 5, Avenue Mohammed V, 12000 Temara, Maroc \\
+Bureau secondaire        & 10, Avenue de Rome, 93150 Le Blanc Mesnil, France \\
+Horaires                 & Lundi au vendredi, 09h00 -- 18h00 \\
+Telephone                & +212 (0) 537 612 736 / +212 (0) 809 893 112 \\
+Email general            & contact@wave.ma \\
+Email RH                 & rh@wave.ma \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Positionnement et services}
+
+Wave Inc. se positionne comme un partenaire technologique de bout en bout pour
+ses clients, en couvrant l'ensemble du cycle de vie d'un projet numerique. Cette
+approche globale se distingue des agences specialisees sur un seul metier comme
+le design ou le referencement.
+
+Les services proposes couvrent le developpement web et mobile, la conception
+d'interfaces utilisateur, l'integration de systemes via des API, le deploiement
+et la maintenance d'applications, ainsi que l'accompagnement dans la
+transformation digitale des entreprises.
+
+Sur le plan technique, l'agence maitrise un ecosysteme technologique large et
+coherent, detaille dans le tableau \ref{tab:stack_wave}.
+
+\vspace{0.4cm}
+\begin{table}[H]
+\centering
+\caption{Stack technologique de Wave Inc.}
+\label{tab:stack_wave}
+\begin{tabularx}{\textwidth}{@{}lX@{}}
+\toprule
+\textbf{Couche} & \textbf{Technologies utilisees} \\
+\midrule
+Frontend   & React JS, Vue.js, Angular, Nuxt.js, TypeScript \\
+Backend    & Laravel, Symfony, CodeIgniter, CakePHP \\
+Mobile     & React Native, Flutter, Ionic \\
+CMS        & WordPress, Drupal, Prestashop, WooCommerce \\
+APIs       & REST, SOAP, WebSockets \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Methodologie de travail}
+
+La methodologie d'ingenierie appliquee par Wave Inc. s'inspire des frameworks
+agiles. Les projets sont decoupes en cycles de developpement courts et iteratifs,
+ce qui permet une mise en production progressive et un ajustement continu en
+fonction des retours clients. Les problematiques de performance, de securite et
+de referencement sont integrees des la phase de prototypage, plutot que traitees
+tardivement comme de simples correctifs.
+
+L'onboarding d'un nouveau projet suit trois jalons : une phase de proposition
+avec estimation de l'effort sous 24 heures, une phase de cadrage technique avec
+le client, puis un demarrage immediat apres signature du contrat.
+
+Concernant les modeles contractuels, l'agence propose deux formules. Le forfait
+global est utilise quand le perimetre fonctionnel est bien defini en amont,
+avec un prix ferme et un pilotage entierement pris en charge par l'agence. Le
+mode regie est prefere pour les projets de longue duree ou les besoins evoluent,
+avec une equipe dediee dont la composition peut etre ajustee selon la charge.
+
+\subsection{Quelques realisations notables}
+
+La credibilite technique de Wave Inc. est illustree par des projets realises
+pour des structures publiques et privees exigeantes.
+
+L'agence a assure le developpement du site institutionnel officiel du Conseil
+de la Concurrence du Royaume du Maroc, une autorite administrative independante
+de rang constitutionnel. Ce type de projet impose des criteres stricts en
+matiere d'accessibilite, de securite des donnees et de disponibilite de
+l'infrastructure pour faire face aux pics de trafic lors de publications de
+rapports sensibles.
+
+Elle a egalement concu la plateforme numerique complete de 2S Africa Travel,
+une agence de voyage haut de gamme agreee par le Ministere du Tourisme marocain.
+La solution integre des modules de tarification dynamique, la gestion de flux de
+reservations complexes et des connexions de paiement securisees avec des
+operateurs comme Visa, Mastercard et Payzone.
+
+Ces references attestent de la capacite de l'agence a livrer des solutions
+logicielles robustes dans des contextes ou la fiabilite et la securite ne sont
+pas negociables.
+
+% ============================================================
+\section{Cadre du projet}
+% ============================================================
+
+\subsection{Problematique}
+
+Malgre son expertise technique et la qualite de ses realisations pour ses
+clients, Wave Inc. n'avait pas consacre le meme niveau d'attention a ses propres
+outils de gestion interne. La gestion du portefeuille clients, des licences
+logicielles, des paiements et des contrats reposait sur des fichiers Excel et
+Google Sheets mis a jour manuellement. Chaque information existait dans un
+fichier different, sans lien entre les donnees, et sans aucun mecanisme
+d'alerte automatique.
+
+Cette situation engendrait plusieurs problemes concrets au quotidien. Un manager
+ne savait pas, sans aller fouiller dans plusieurs fichiers, si un client avait
+des licences sur le point d'expirer ou des paiements en retard. La creation
+d'une facture necessitait de recopier manuellement les informations du client
+depuis une feuille vers une autre. Il n'existait aucune trace structuree des
+echanges commerciaux avec un client, aucun historique consolide des paiements
+et aucune vision globale des performances mensuelles sans construire soi-meme
+des tableaux recapitulatifs.
+
+Plus l'activite grandissait, plus cette approche montrait ses limites. Le risque
+d'erreur augmentait, le temps consacre aux taches administratives repetitives
+s'alourdissait et la qualite du suivi client se degradait faute d'un outil
+centralise.
+
+\subsection{Analyse de l'existant}
+
+Avant le developpement de \wave{}, le processus de gestion d'un client
+ressemblait a ceci : les informations de base etaient saisies dans un fichier
+Excel partage sur Google Drive, les paiements recus etaient notes dans un
+autre onglet, les licences attribuees etaient listees dans un troisieme
+tableau, et les rappels d'echeances de contrats etaient geres manuellement
+par le manager concerne, souvent via des alertes dans son calendrier personnel.
+
+Cette fragmentation posait plusieurs problemes identifies lors de l'analyse
+de l'existant.
+
+Premierement, il n'y avait aucune source de verite unique. Une information
+modifiee dans un fichier n'etait pas automatiquement repercutee ailleurs,
+ce qui generait des incoherences entre les donnees.
+
+Deuxiemement, le suivi des licences etait entierement manuel. Aucun systeme
+n'informait automatiquement l'equipe qu'une licence allait expirer dans une
+semaine. C'est le manager qui devait consulter regulierement le fichier et
+faire le calcul lui-meme.
+
+Troisiemement, la generation de factures etait une operation longue et
+repetitive. Il fallait ouvrir un modele Word ou Excel, recopier les
+informations du client, calculer les montants, exporter en PDF et envoyer
+par email. Aucune numerotation automatique n'existait, ce qui compliquait
+la tracabilite des documents.
+
+Quatriemement, les clients n'avaient aucune visibilite sur leur propre
+situation. Ils ne pouvaient pas consulter leurs licences actives, leurs
+factures ou leurs contrats sans contacter directement leur manager, ce qui
+generait une charge supplementaire pour l'equipe.
+
+Le tableau \ref{tab:analyse_existant} synthetise les principales limites
+identifiees.
+
+\vspace{0.4cm}
+\begin{table}[H]
+\centering
+\caption{Analyse des limites du systeme existant}
+\label{tab:analyse_existant}
+\begin{tabularx}{\textwidth}{@{}lXl@{}}
+\toprule
+\textbf{Domaine} & \textbf{Probleme identifie} & \textbf{Impact} \\
+\midrule
+Donnees clients    & Informations dispersees dans plusieurs fichiers
+                     sans synchronisation                          & Eleve \\[4pt]
+Licences           & Aucune alerte automatique d'expiration        & Eleve \\[4pt]
+Paiements          & Suivi manuel, pas d'historique consolide      & Moyen \\[4pt]
+Facturation        & Generation manuelle, pas de numerotation auto & Moyen \\[4pt]
+Contrats           & Pas d'alerte sur les echeances proches        & Eleve \\[4pt]
+Espace client      & Aucun acces autonome pour les clients         & Moyen \\[4pt]
+Reporting          & Aucun tableau de bord, construction manuelle  & Eleve \\[4pt]
+Traçabilite        & Aucun journal des actions effectuees          & Moyen \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Solution proposee}
+
+Face a ces constats, il a ete decide de developper \wave{}, une application
+web full-stack centralisee qui regroupe l'ensemble de ces fonctionnalites dans
+une interface unique et coherente.
+
+La solution repond aux lacunes identifiees de la maniere suivante. Toutes les
+donnees clients, paiements, licences, factures et contrats sont stockees dans
+une base de donnees relationnelle unique, ce qui elimine les incoherences entre
+fichiers. Des taches planifiees envoient automatiquement des emails d'alerte
+aux clients dont les licences expirent dans sept jours ou qui accusent un
+retard de paiement. La facturation est entierement automatisee avec une
+numerotation sequentielle au format \texttt{FAC-YYYY-NNNN} et une generation
+PDF en un clic. Les clients disposent d'un espace personnel ou ils peuvent
+consulter leurs licences actives, leurs factures, leurs contrats et passer
+de nouvelles commandes via PayPal. Un journal d'audit base sur Spatie
+ActivityLog trace toutes les actions effectuees sur les ressources sensibles.
+Un tableau de bord analytique avec visualisation graphique des revenus mensuels
+permet aux managers de piloter leur activite sans construire manuellement
+de tableaux recapitulatifs.
+
+\subsection{Comparaison entre l'ancien systeme et WAVE}
+
+Le tableau \ref{tab:comparaison} presente une synthese comparative entre
+la situation avant le projet et les apports de la nouvelle plateforme.
+
+\vspace{0.4cm}
+\begin{table}[H]
+\centering
+\caption{Comparaison entre l'existant et la solution WAVE}
+\label{tab:comparaison}
+\begin{tabularx}{\textwidth}{@{}lXX@{}}
+\toprule
+\textbf{Fonctionnalite} & \textbf{Avant WAVE} & \textbf{Avec WAVE} \\
+\midrule
+Gestion clients    & Fichiers Excel separes  & Base de donnees centralisee \\[4pt]
+Alertes licences   & Manuelle ou inexistante & Email automatique J-7 \\[4pt]
+Generation facture & Copier-coller manuel    & PDF genere en un clic \\[4pt]
+Numerotation       & Pas de standard         & FAC-YYYY-NNNN auto \\[4pt]
+Espace client      & Inexistant              & Portail self-service \\[4pt]
+Paiement en ligne  & Inexistant              & Commande via PayPal \\[4pt]
+Tableau de bord    & Construction manuelle   & KPIs et graphiques temps reel \\[4pt]
+Journal d'audit    & Inexistant              & Traçabilite complete (Spatie) \\[4pt]
+Relances retards   & Email manuel du manager & Envoi automatique planifie \\[4pt]
+Pipeline CRM       & Aucun                   & Module opportunites integre \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+% ============================================================
+\section{Analyse et specification des besoins}
+% ============================================================
+
+La specification des besoins a ete conduite apres plusieurs echanges avec
+l'encadrant professionnel M. Mohamed Aherdane, en analysant les processus
+existants et en identifiant les points de friction les plus critiques. Les
+besoins se repartissent en deux categories : fonctionnels, qui decrivent ce
+que le systeme doit faire, et non fonctionnels, qui decrivent comment il doit
+le faire.
+
+\subsection{Besoins fonctionnels}
+
+Les besoins fonctionnels ont ete organises par module, en distinguant les
+fonctionnalites selon le role de l'utilisateur concerne.
+
+\vspace{0.3cm}
+\textbf{1. Authentification et gestion des roles}
+
+\begin{itemize}
+  \item Connexion securisee par email et mot de passe avec generation d'un
+        token Bearer via Laravel Sanctum.
+  \item Deconnexion avec invalidation immediate du token.
+  \item Redirection automatique vers le tableau de bord correspondant au role
+        apres connexion (admin, manager, client).
+  \item Controle d'acces granulaire : chaque groupe de routes est protege par
+        un middleware de verification du role.
+  \item Provisionnement d'un compte utilisateur pour un client par le manager,
+        sans que le client n'ait a s'inscrire lui-meme.
+\end{itemize}
+
+\vspace{0.3cm}
+\textbf{2. Gestion des clients}
+
+\begin{itemize}
+  \item Creation, modification et suppression douce (soft delete) d'une fiche
+        client avec les champs nom, email, telephone, societe, statut et notes.
+  \item Recherche et filtrage de la liste des clients par nom, email ou statut
+        (actif, en attente, en retard).
+  \item Export de la liste complete des clients au format CSV.
+  \item Consultation d'un journal d'audit par client, trace par Spatie
+        ActivityLog, listant toutes les actions effectuees sur sa fiche.
+\end{itemize}
+
+\vspace{0.3cm}
+\textbf{3. Gestion des paiements}
+
+\begin{itemize}
+  \item Enregistrement, modification et suppression douce de paiements, avec
+        les informations montant (en MAD), date, reference et type
+        (abonnement, licence, autre).
+  \item Calcul automatique du total des paiements par client.
+  \item Export du releve de paiements d'un client au format PDF via
+        Laravel DomPDF.
+\end{itemize}
+
+\vspace{0.3cm}
+\textbf{4. Gestion des licences}
+
+\begin{itemize}
+  \item Attribution d'une licence produit a un client avec date d'attribution
+        et calcul automatique de la date d'expiration selon la duree du produit.
+  \item Revocation d'une licence.
+  \item Mise a jour automatique du statut de la licence : active, bientot
+        expiree (a moins de 7 jours) ou expiree.
+  \item Envoi d'un email de rappel automatique au client dont la licence expire
+        dans exactement 7 jours.
+\end{itemize}
+
+\vspace{0.3cm}
+\textbf{5. Gestion des factures}
+
+\begin{itemize}
+  \item Creation, modification et suppression douce de factures avec
+        numerotation sequentielle automatique au format \texttt{FAC-YYYY-NNNN}.
+  \item Telechargement individuel de chaque facture au format PDF.
+  \item Liaison automatique entre une facture et le paiement correspondant.
+\end{itemize}
+
+\vspace{0.3cm}
+\textbf{6. Gestion des contrats}
+
+\begin{itemize}
+  \item Creation, modification et suppression de contrats avec dates de debut
+        et de fin, montant en MAD et manager responsable.
+  \item Mise a jour automatique du statut du contrat (actif ou expire) selon
+        la date du jour.
+  \item Alerte sur les contrats expirant dans les prochains jours, accessible
+        depuis le tableau de bord.
+\end{itemize}
+
+\vspace{0.3cm}
+\textbf{7. Relances commerciales}
+
+\begin{itemize}
+  \item Creation et gestion de relances (follow-ups) associees a un client,
+        avec note, date prevue et statut (faite ou non).
+  \item Envoi automatique d'un email de rappel aux clients en statut "en retard"
+        chaque lundi matin.
+\end{itemize}
+
+\vspace{0.3cm}
+\textbf{8. Pipeline commercial}
+
+\begin{itemize}
+  \item Creation, modification et suppression d'opportunites commerciales avec
+        titre, description, montant estime en MAD, statut et date de cloture
+        prevue.
+  \item Attribution d'une opportunite a un client et a un manager responsable.
+\end{itemize}
+
+\vspace{0.3cm}
+\textbf{9. Tickets de support}
+
+\begin{itemize}
+  \item Soumission d'un ticket de support par le client depuis son espace
+        personnel, avec sujet et message.
+  \item Consultation et mise a jour du statut des tickets par le manager.
+\end{itemize}
+
+\vspace{0.3cm}
+\textbf{10. Tableau de bord et statistiques}
+
+\begin{itemize}
+  \item Affichage des KPIs principaux : nombre total de clients, clients payes,
+        clients en attente, clients en retard et revenu mensuel recurrent (MRR).
+  \item Graphique des revenus par mois sur l'annee selectionnee.
+  \item Alerte visuelle si des licences expirent dans les 7 prochains jours.
+\end{itemize}
+
+\vspace{0.3cm}
+\textbf{11. Espace client}
+
+\begin{itemize}
+  \item Consultation des licences actives avec dates d'expiration.
+  \item Consultation et telechargement des factures et contrats.
+  \item Soumission et suivi de tickets de support.
+  \item Consultation des notifications in-app et marquage comme lue.
+  \item Acces a la boutique de produits et passation de commandes via PayPal.
+  \item Export du releve personnel en PDF.
+\end{itemize}
+
+\vspace{0.3cm}
+\textbf{12. Administration}
+
+\begin{itemize}
+  \item Creation, consultation et suppression de comptes managers par l'admin.
+  \item Creation, modification, suppression et activation/desactivation de
+        produits avec prix en MAD et duree de licence en jours.
+  \item Definition et mise a jour des objectifs mensuels par manager.
+\end{itemize}
+
+\subsection{Besoins non fonctionnels}
+
+Au-dela des fonctionnalites, la solution devait repondre a un ensemble
+d'exigences de qualite.
+
+\vspace{0.3cm}
+\textbf{1. Securite}
+
+Toutes les routes de l'API sont protegees par un token Bearer obligatoire.
+Tout acces sans token valide est immediatement rejete avec une erreur HTTP 401.
+Le middleware de role verifie, en plus de l'authentification, que l'utilisateur
+connecte dispose bien des droits necessaires pour acceder a la ressource
+demandee. Les mots de passe sont haches avec bcrypt. Un intercepteur Axios
+cote frontend purge le token stocke en local et redirige vers la page de
+connexion en cas de reponse 401 du serveur. Les politiques CORS sont
+configurees pour n'accepter que les requetes provenant du frontend autorise.
+
+\vspace{0.3cm}
+\textbf{2. Performance}
+
+Les emails sont envoyes de maniere asynchrone via le systeme de queues de
+Laravel, de sorte que les actions de l'utilisateur ne soient jamais bloquees
+par un envoi d'email. Les listes de clients et de paiements sont paginées
+pour eviter de charger des volumes de donnees trop importants en une seule
+requete.
+
+\vspace{0.3cm}
+\textbf{3. Ergonomie}
+
+L'interface doit etre accessible sans formation particuliere. La navigation
+doit etre intuitive et les actions importantes doivent etre accessibles en
+un minimum de clics. Chaque role dispose de son propre layout avec uniquement
+les menus qui le concernent, ce qui evite toute confusion entre les espaces.
+
+\vspace{0.3cm}
+\textbf{4. Fiabilite}
+
+Toutes les entrees utilisateur sont validees cote serveur avant tout
+traitement. Les suppressions de clients, paiements et factures sont
+implementees en soft delete pour eviter toute perte accidentelle de donnees.
+Les actions critiques comme la suppression d'un compte ou la modification
+d'un statut sont protegees par des regles metier strictes.
+
+\vspace{0.3cm}
+\textbf{5. Maintenabilite}
+
+Le backend est organise en modules independants par domaine fonctionnel.
+Le frontend est structure en composants React reutilisables avec une separation
+claire entre la logique d'etat et la presentation. Cette organisation facilite
+l'ajout de nouveaux modules sans impacter les fonctionnalites existantes.
+
+% ============================================================
+\section{Gestion du projet}
+% ============================================================
+
+Le stage s'est deroule sur une duree de quatre semaines. La gestion du projet
+a suivi une approche MVP (Minimum Viable Product) : developper d'abord les
+fonctionnalites essentielles du systeme, a savoir l'authentification, la
+gestion des clients et des paiements, avant d'enrichir progressivement la
+plateforme avec les modules plus avances comme les notifications, le pipeline
+commercial et l'espace client.
+
+Le travail a ete realise en autonomie, avec des points reguliers avec
+M. Mohamed Aherdane pour valider les choix techniques et les livrables de
+chaque phase. Le code source a ete versionne sur GitHub via Git tout au long
+du developpement, ce qui a permis de conserver un historique clair des
+modifications et de revenir a des etats anterieurs si necessaire.
+
+\subsection{Planification previsionnelle}
+
+La figure \ref{fig:gantt} presente la repartition temporelle des differentes
+phases du projet sous forme de diagramme de Gantt.
+
+\vspace{0.4cm}
+\begin{figure}[H]
+\centering
+\begin{tabular}{@{}p{5.5cm}cccc@{}}
+\toprule
+\textbf{Tache} & \textbf{S1} & \textbf{S2} & \textbf{S3} & \textbf{S4} \\
+\midrule
+Analyse des besoins et conception BD
+  & \cellcolor{WaveBlue!60}\textcolor{white}{\textbf{---}}
+  & & & \\[6pt]
+Developpement backend (API REST)
+  & & \cellcolor{WaveBlue!60}\textcolor{white}{\textbf{---}}
+  & & \\[6pt]
+Developpement frontend (React)
+  & & & \cellcolor{WaveBlue!60}\textcolor{white}{\textbf{---}}
+  & \\[6pt]
+Tests, corrections et livraison
+  & & & & \cellcolor{WaveBlue!60}\textcolor{white}{\textbf{---}} \\
+\bottomrule
+\end{tabular}
+\caption{Diagramme de Gantt previsionnel du projet (4 semaines)}
+\label{fig:gantt}
+\end{figure}
+
+La premiere semaine a ete consacree a l'analyse des besoins, a l'etude de
+l'existant, a la conception de la base de donnees et au maquettage des
+interfaces principales. La deuxieme semaine a porte sur le developpement du
+backend : mise en place de l'API REST, authentification, gestion des clients,
+paiements, licences, factures et contrats. La troisieme semaine a ete dediee
+au frontend : construction des layouts par role, developpement des pages,
+integration des appels API et mise en place de l'espace client. La quatrieme
+semaine a ete reservee aux tests fonctionnels, corrections des bugs identifies
+et finalisation des livraisons.
+
+% ============================================================
+\section{Conclusion}
+% ============================================================
+
+Ce premier chapitre a permis de poser le cadre du projet. La presentation de
+Wave Inc. illustre une agence avec une expertise technique solide et des
+references serieuses, mais dont les outils de gestion interne n'etaient pas
+a la hauteur de cette expertise. L'analyse de l'existant a mis en evidence
+des lacunes significatives : donnees dispersees, aucune automatisation des
+alertes, generation de documents manuelle et aucune visibilite offerte aux
+clients sur leur propre situation.
+
+La solution \wave{} repond directement a ces problemes en centralisant
+l'ensemble des processus dans une plateforme unique, structuree autour
+d'une architecture API-first moderne et d'un systeme de roles permettant
+a chaque utilisateur d'acceder uniquement a ce qui le concerne.
+
+Le chapitre suivant sera consacre a la phase d'analyse et de conception,
+avec la modelisation UML du systeme, la conception de la base de donnees
+relationnelle et la definition de l'architecture technique retenue.
 
 
-
+\input{chapitre2}
 
 \end{document}
+
+

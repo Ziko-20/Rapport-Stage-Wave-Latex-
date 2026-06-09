@@ -1,1 +1,11 @@
 \babel@toc {french}{}\relax 
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Diagramme de Gantt previsionnel du projet (4 semaines)}}{13}{figure.caption.9}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Diagramme de cas d'utilisation -- Scheduler, Clients et Factures}}{18}{figure.caption.10}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Diagramme de cas d'utilisation -- Manager}}{20}{figure.caption.11}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Diagramme de cas d'utilisation -- Admin et Client}}{22}{figure.caption.12}%
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Diagramme de sequence -- Authentification et redirection par role}}{24}{figure.caption.13}%
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Diagramme de sequence -- Commande et paiement PayPal}}{26}{figure.caption.14}%
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Diagramme de sequence -- Verification automatique des licences}}{28}{figure.caption.15}%
+\contentsline {figure}{\numberline {2.7}{\ignorespaces Diagramme de classes de l'application WAVE}}{30}{figure.caption.16}%
